@@ -7,9 +7,26 @@ import kotlin.concurrent.thread
 import kotlin.random.Random
 
 fun main() {
-    lambda()
+  /*  lambda()
     threads()
-    coroutinesVsThreads()
+    coroutinesVsThreads()*/
+    sequences()
+    
+}
+
+fun sequences() {
+    newTopic("Sequence")
+    getDataBySeq().forEach { println("${it}") }
+}
+
+fun getDataBySeq(): Sequence<Float> {
+    return sequence { 
+        (1..5).forEach { 
+            println("Procesando datos...")
+            Thread.sleep(someTime())
+            yield(20 + it + Random.nextFloat())
+        }
+    }
 }
 
 fun coroutinesVsThreads() {
