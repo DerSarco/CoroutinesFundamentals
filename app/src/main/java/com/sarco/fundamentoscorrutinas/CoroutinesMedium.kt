@@ -40,6 +40,16 @@ fun getDataByFlow(): Flow<Float> {
     }
 }
 
+fun getDataByFlowStatic(): Flow<Float> {
+    return flow {
+        (1..5).forEach {
+            println("Procesando datos...")
+            delay(300)
+            emit(20 + it + Random.nextFloat())
+        }
+    }
+}
+
 fun changeWithContext() {
     runBlocking {
         newTopic("withContext")
